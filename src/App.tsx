@@ -8,9 +8,8 @@ function App(): JSX.Element {
         <div className="App">
             <header className="App-header">
                 UD CISC275 with React Hooks and TypeScript
-                <p>Alexis Mainiero</p>
+                <h1>Alexis Mainiero</h1>
             </header>
-            <header>First Site</header>
             <p>
                 Edit <code>src/App.tsx</code> and save. This page will
                 automatically reload.
@@ -21,7 +20,7 @@ function App(): JSX.Element {
                     <Col>
                         <div
                             style={{
-                                border: "2px solid red",
+                                border: "6px solid red",
                                 width: "200px",
                                 height: "150",
                                 backgroundColor: "white",
@@ -51,9 +50,9 @@ function App(): JSX.Element {
                         <div
                             style={{
                                 border: "4px solid red",
-                                width: "",
-                                height: "80",
-                                backgroundColor: "black",
+                                width: "300px",
+                                height: "550px",
+                                backgroundColor: "red",
                                 padding: "4px"
                             }}
                         >
