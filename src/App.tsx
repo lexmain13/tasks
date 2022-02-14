@@ -52,7 +52,7 @@ function App(): JSX.Element {
                                 border: "4px solid red",
                                 width: "300px",
                                 height: "550px",
-                                backgroundColor: "black",
+                                backgroundColor: "red",
                                 padding: "4px"
                             }}
                         >
