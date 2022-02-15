@@ -23,7 +23,7 @@ function App(): JSX.Element {
                                 border: "6px solid red",
                                 width: "200px",
                                 height: "150",
-                                backgroundColor: "white",
+                                backgroundColor: "red",
                                 alignContent: "center",
                                 padding: "2px"
                             }}
