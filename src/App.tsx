@@ -1,6 +1,6 @@
 import React from "react";
-import { Col, Container, Row, Button } from "react-bootstrap";
 import "./App.css";
+import { Col, Container, Row, Button } from "react-bootstrap";
 import Pup from "../src/Puppies.jpg";
 
 function App(): JSX.Element {
