@@ -14,59 +14,6 @@ function App(): JSX.Element {
                 Edit <code>src/App.tsx</code> and save. This page will
                 automatically reload.
             </p>
-            <p>Hello World!</p>
-            <Container>
-                <Row>
-                    <Col>
-                        <div
-                            style={{
-                                border: "6px solid red",
-                                width: "200px",
-                                height: "150",
-                                backgroundColor: "red",
-                                alignContent: "center",
-                                padding: "2px"
-                            }}
-                        >
-                            My Top 3 Colors
-                            <ol>
-                                <li>Purple</li>
-                                <li>Pink</li>
-                                <li>Blue</li>
-                            </ol>
-                        </div>
-                        <br></br>
-                        <div>
-                            <p>
-                                <Button
-                                    onClick={() => console.log("Hello World!")}
-                                >
-                                    Log Hello World
-                                </Button>
-                            </p>
-                        </div>
-                    </Col>
-                    <Col>
-                        <div
-                            style={{
-                                border: "4px solid red",
-                                width: "300px",
-                                height: "550px",
-                                backgroundColor: "red",
-                                padding: "4px"
-                            }}
-                        >
-                            {" "}
-                            <img
-                                src={Pup}
-                                width="230"
-                                height="460"
-                                alt="My puppies, Tilly and Mojo."
-                            ></img>
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
         </div>
     );
 }
