@@ -5,7 +5,16 @@
  * the number twice.
  */
 export function bookEndList(numbers: number[]): number[] {
-    return numbers;
+    let endNums: number[] = [];
+    if (numbers === []) {
+        return endNums;
+    } else if (numbers.length === 0) {
+        endNums = [numbers[0], numbers[0]];
+        return endNums;
+    } else {
+        endNums = [numbers[0], numbers[numbers.length - 1]];
+        return endNums;
+    }
 }
 
 /**
@@ -13,7 +22,8 @@ export function bookEndList(numbers: number[]): number[] {
  * number has been tripled (multiplied by 3).
  */
 export function tripleNumbers(numbers: number[]): number[] {
-    return numbers;
+    const tripled = numbers.map((number: number): number => number * 3);
+    return tripled;
 }
 
 /**
@@ -21,7 +31,10 @@ export function tripleNumbers(numbers: number[]): number[] {
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
 export function stringsToIntegers(numbers: string[]): number[] {
-    return [];
+    const charCount = numbers.map(
+        (numbers: string): number => numbers.toString.length
+    );
+    return charCount;
 }
 
 /**
@@ -49,7 +62,8 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
  * 4 letters long.
  */
 export function countShortWords(words: string[]): number {
-    return 0;
+    const shortWords = words.filter((words: string): boolean => words.length < 3);
+    return shortWords.length;
 }
 
 /**
@@ -58,6 +72,8 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
+    if () { 
+    }
     return false;
 }
 
