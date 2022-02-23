@@ -102,7 +102,7 @@ export function makeMath(addends: number[]): string {
         (currentTotal: number, num: number) => currentTotal + num,
         0
     );
-    const func = addends.join(" + ");
+    const func = addends.join("+");
     return sum + " = " + func;
 }
 
