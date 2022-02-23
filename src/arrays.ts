@@ -1,3 +1,4 @@
+import { join } from "path/posix";
 import { sortAndDeduplicateDiagnostics } from "typescript";
 
 /**
@@ -97,7 +98,12 @@ export function allRGB(colors: string[]): boolean {
  * And the array [] would become "0=0".
  */
 export function makeMath(addends: number[]): string {
-    return "";
+    const sum = addends.reduce(
+        (currentTotal: number, num: number) => currentTotal + num,
+        0
+    );
+    const func = addends.join(" + ");
+    return sum + " = " + func;
 }
 
 /**
@@ -133,7 +139,7 @@ export function injectPositive(values: number[]): number[] {
         (value: number): boolean => value < 0
     );
     //In the case an index is not undefined (found)
-    if (negativeIndex === undefined) {
+    if (negativeIndex !== -1) {
         positiveVibes.splice(
             negativeIndex + 1,
             0,
