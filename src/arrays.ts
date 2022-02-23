@@ -9,9 +9,9 @@ import { sortAndDeduplicateDiagnostics } from "typescript";
  */
 export function bookEndList(numbers: number[]): number[] {
     let endNums: number[] = [];
-    if (numbers === []) {
+    if (numbers.length === 0) {
         return endNums;
-    } else if (numbers.length === 0) {
+    } else if (numbers.length === 1) {
         endNums = [numbers[0], numbers[0]];
         return endNums;
     } else {
@@ -48,7 +48,10 @@ export function stringsToIntegers(numbers: string[]): number[] {
  */
 // Remember, you can write functions as lambdas too! They work exactly the same.
 export const removeDollars = (amounts: string[]): number[] => {
-    return [];
+    const noDollar = amounts.map((word: string): string =>
+        word.replace("$", "")
+    );
+    return stringsToIntegers(noDollar);
 };
 
 /**
@@ -102,8 +105,13 @@ export function makeMath(addends: number[]): string {
         (currentTotal: number, num: number) => currentTotal + num,
         0
     );
-    const func = addends.join("+");
-    return sum + " = " + func;
+    let func;
+    if (addends.length === 0) {
+        return "0=0";
+    } else {
+        func = addends.join("+");
+    }
+    return sum + "=" + func;
 }
 
 /**
