@@ -1,3 +1,5 @@
+import { sortAndDeduplicateDiagnostics } from "typescript";
+
 /**
  * Consume an array of numbers, and return a new array containing
  * JUST the first and last number. If there are no elements, return
@@ -54,10 +56,13 @@ export const removeDollars = (amounts: string[]): number[] => {
  * in question marks ("?").
  */
 export const shoutIfExclaiming = (messages: string[]): string[] => {
-    const isShouting = (messages: string): boolean => messages.endsWith("!");
-    const shouting = messages.filter(isShouting);
-    const isQuestion = (messages: string): boolean => messages.endsWith("?");
-    return [];
+    const isShouting = messages.map((message: string): string =>
+        message[message.length - 1] === "!" ? message.toUpperCase() : message
+    );
+    const isQuestion = messages.filter(
+        (message: string): boolean => message[message.length - 1] === "?"
+    );
+    return messages;
 };
 
 /**
