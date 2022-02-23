@@ -57,7 +57,11 @@ export const removeDollars = (amounts: string[]): number[] => {
  */
 export const shoutIfExclaiming = (messages: string[]): string[] => {
     const isShouting = messages.map((message: string): string =>
-        message[message.length - 1] === "!" ? message.toUpperCase() : message
+        message.toUpperCase()
+            ? message[message.length - 1] === "!"
+                ? message.toUpperCase()
+                : message
+            : message
     );
     const isQuestion = messages.filter(
         (message: string): boolean => message[message.length - 1] === "?"
@@ -106,5 +110,20 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    return [];
+    const negatives = values.some((value: number): boolean => value < 0);
+    const negIndex = values.findIndex((value: number): boolean => value < 0);
+    let vals;
+    vals = negatives
+        ? (values.splice(
+              negIndex + 1,
+              0,
+              values
+                  .splice(negIndex)
+                  .reduce((total: number, num: number) => total + num, 0)
+          )
+        : (vals = [
+              ...values,
+              values.reduce((total: number, num: number) => total + num, 0)
+          ]);
+    return vals;
 }
