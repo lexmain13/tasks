@@ -112,7 +112,7 @@ export function makeMath(addends: number[]): string {
 export function injectPositive(values: number[]): number[] {
     const negatives = values.some((value: number): boolean => value < 0);
     const negIndex = values.findIndex((value: number): boolean => value < 0);
-    let vals;
+    /**let vals;
     vals = negatives
         ? (values.splice(
               negIndex + 1,
@@ -126,4 +126,40 @@ export function injectPositive(values: number[]): number[] {
               values.reduce((total: number, num: number) => total + num, 0)
           ]);
     return vals;
+    */
+    const positiveVibes = [...values];
+    const onlyPositive = [...values];
+    const negativeIndex = values.findIndex(
+        (value: number): boolean => value < 0
+    );
+    //In the case an index is not undefined (found)
+    if (negativeIndex === undefined) {
+        positiveVibes.splice(
+            negativeIndex + 1,
+            0,
+            positiveVibes
+                .slice(0, negativeIndex)
+                .reduce(
+                    (oldValue: number, newValue: number) => oldValue + newValue
+                )
+        );
+        return positiveVibes;
+    } else {
+        //Otherwise return the sum with positive values when array is copied
+        const sum = values.reduce(
+            (oldValue: number, newValue: number) => oldValue + newValue,
+            0
+        );
+        onlyPositive.splice(onlyPositive.length, 0, sum);
+        /**positiveVibes.push(sum);
+    /**positiveVibes.splice(
+        values.length-1,
+        0,
+        values.reduce(
+            (oldValue: number, newValue: number) => oldValue + newValue
+        )
+    );
+    */
+        return onlyPositive;
+    }
 }
