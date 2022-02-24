@@ -79,7 +79,7 @@ export const shoutIfExclaiming = (messages: string[]): string[] => {
  */
 export function countShortWords(words: string[]): number {
     const shortWords = words.filter(
-        (words: string): boolean => words.length < 3
+        (words: string): boolean => words.length < 4
     );
     return shortWords.length;
 }
@@ -90,12 +90,12 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    const notIncludesRed = !colors.includes("red");
-    const notIncludesBlue = !colors.includes("blue");
-    const notIncludesGreen = !colors.includes("green");
+    const IncludesRed = colors.includes("red");
+    const IncludesBlue = colors.includes("blue");
+    const IncludesGreen = colors.includes("green");
     if (allRGB.length === 0) {
         return true;
-    } else if (notIncludesRed || notIncludesBlue || notIncludesGreen) {
+    } else if (!IncludesRed && !IncludesBlue && !IncludesGreen) {
         return false;
     } else {
         return true;
