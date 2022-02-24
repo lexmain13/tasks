@@ -87,16 +87,17 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    const IncludesRed = colors.includes("red");
-    const IncludesBlue = colors.includes("blue");
-    const IncludesGreen = colors.includes("green");
+    let isOrIsNot = true;
     if (colors.length === 0) {
         return true;
-    } else if (!IncludesRed && !IncludesBlue && !IncludesGreen) {
-        return false;
     } else {
-        return true;
+        colors.map((color: string): boolean =>
+            color !== "red" && color !== "blue" && color !== "green"
+                ? (isOrIsNot = false)
+                : isOrIsNot
+        );
     }
+    return isOrIsNot;
 }
 
 /**
