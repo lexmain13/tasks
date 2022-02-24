@@ -90,7 +90,16 @@ export function countShortWords(words: string[]): number {
  * then return true.
  */
 export function allRGB(colors: string[]): boolean {
-    return false;
+    const notIncludesRed = !colors.includes("red");
+    const notIncludesBlue = !colors.includes("blue");
+    const notIncludesGreen = !colors.includes("green");
+    if (allRGB.length === 0) {
+        return true;
+    } else if (notIncludesRed || notIncludesBlue || notIncludesGreen) {
+        return false;
+    } else {
+        return true;
+    }
 }
 
 /**
@@ -124,9 +133,9 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    const negatives = values.some((value: number): boolean => value < 0);
+    /**const negatives = values.some((value: number): boolean => value < 0);
     const negIndex = values.findIndex((value: number): boolean => value < 0);
-    /**let vals;
+    let vals;
     vals = negatives
         ? (values.splice(
               negIndex + 1,
@@ -141,23 +150,23 @@ export function injectPositive(values: number[]): number[] {
           ]);
     return vals;
     */
-    const positiveVibes = [...values];
+    const positives = [...values];
     const onlyPositive = [...values];
     const negativeIndex = values.findIndex(
         (value: number): boolean => value < 0
     );
     //In the case an index is not undefined (found)
     if (negativeIndex !== -1) {
-        positiveVibes.splice(
+        positives.splice(
             negativeIndex + 1,
             0,
-            positiveVibes
+            positives
                 .slice(0, negativeIndex)
                 .reduce(
                     (oldValue: number, newValue: number) => oldValue + newValue
                 )
         );
-        return positiveVibes;
+        return positives;
     } else {
         //Otherwise return the sum with positive values when array is copied
         const sum = values.reduce(
