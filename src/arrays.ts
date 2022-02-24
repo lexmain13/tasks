@@ -1,5 +1,6 @@
 import { join } from "path/posix";
 import { sortAndDeduplicateDiagnostics } from "typescript";
+import { shout } from "./functions";
 
 /**
  * Consume an array of numbers, and return a new array containing
@@ -34,10 +35,10 @@ export function tripleNumbers(numbers: number[]): number[] {
  * the number cannot be parsed as an integer, convert it to 0 instead.
  */
 export function stringsToIntegers(numbers: string[]): number[] {
-    const charCount = numbers.map(
-        (numbers: string): number => numbers.toString.length
-    );
-    return charCount;
+    const charCount = numbers.map((number: string): number => parseInt(number));
+    const addZero = (number: number): number => (isNaN(number) ? 0 : number);
+    const endResult = charCount.map(addZero);
+    return endResult;
 }
 
 /**
@@ -60,17 +61,13 @@ export const removeDollars = (amounts: string[]): number[] => {
  * in question marks ("?").
  */
 export const shoutIfExclaiming = (messages: string[]): string[] => {
-    const isShouting = messages.map((message: string): string =>
-        message.toUpperCase()
-            ? message[message.length - 1] === "!"
-                ? message.toUpperCase()
-                : message
-            : message
-    );
     const isQuestion = messages.filter(
-        (message: string): boolean => message[message.length - 1] === "?"
+        (message: string): boolean => message.endsWith("?") === false
     );
-    return messages;
+    const isShouting = isQuestion.map((message: string): string =>
+        message.endsWith("!") ? message.toUpperCase() : message
+    );
+    return isShouting;
 };
 
 /**
@@ -93,7 +90,7 @@ export function allRGB(colors: string[]): boolean {
     const IncludesRed = colors.includes("red");
     const IncludesBlue = colors.includes("blue");
     const IncludesGreen = colors.includes("green");
-    if (allRGB.length === 0) {
+    if (colors.length === 0) {
         return true;
     } else if (!IncludesRed && !IncludesBlue && !IncludesGreen) {
         return false;
