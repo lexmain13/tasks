@@ -131,56 +131,27 @@ export function makeMath(addends: number[]): string {
  * And the array [1, 9, 7] would become [1, 9, 7, 17]
  */
 export function injectPositive(values: number[]): number[] {
-    /**const negatives = values.some((value: number): boolean => value < 0);
-    const negIndex = values.findIndex((value: number): boolean => value < 0);
-    let vals;
-    vals = negatives
-        ? (values.splice(
-              negIndex + 1,
-              0,
-              values
-                  .splice(negIndex)
-                  .reduce((total: number, num: number) => total + num, 0)
-          )
-        : (vals = [
-              ...values,
-              values.reduce((total: number, num: number) => total + num, 0)
-          ]);
-    return vals;
-    */
-    const positives = [...values];
+    const positive = [...values];
     const onlyPositive = [...values];
-    const negativeIndex = values.findIndex(
-        (value: number): boolean => value < 0
-    );
-    //In the case an index is not undefined (found)
-    if (negativeIndex !== -1) {
-        positives.splice(
-            negativeIndex + 1,
+    const negIndex = values.findIndex((value: number): boolean => value < 0);
+    if (negIndex !== -1) {
+        positive.splice(
+            negIndex + 1,
             0,
-            positives
-                .slice(0, negativeIndex)
+            positive
+                .slice(0, negIndex)
                 .reduce(
-                    (oldValue: number, newValue: number) => oldValue + newValue
+                    (total: number, newValue: number) => total + newValue,
+                    0
                 )
         );
-        return positives;
+        return positive;
     } else {
-        //Otherwise return the sum with positive values when array is copied
         const sum = values.reduce(
             (oldValue: number, newValue: number) => oldValue + newValue,
             0
         );
         onlyPositive.splice(onlyPositive.length, 0, sum);
-        /**positiveVibes.push(sum);
-    /**positiveVibes.splice(
-        values.length-1,
-        0,
-        values.reduce(
-            (oldValue: number, newValue: number) => oldValue + newValue
-        )
-    );
-    */
         return onlyPositive;
     }
 }
