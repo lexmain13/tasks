@@ -90,18 +90,6 @@ export function toShortForm(question: Question): string {
  */
 export function toMarkdown(question: Question): string {
     if (question.type === "multiple_choice_question") {
-        /**JSON.stringify(question.name);
-        JSON.stringify(question.body);
-        JSON.stringify(question.options);
-        return (
-            "#" + question.name,
-            question.body,
-            question.options[0],
-            question.options[1],
-            question.options[2],
-            question.options[3]
-            
-        );*/
         JSON.stringify(question);
         return (
             "# " +
@@ -164,7 +152,11 @@ export function duplicateQuestion(id: number, oldQuestion: Question): Question {
  * Check out the subsection about "Nested Fields" for more information.
  */
 export function addOption(question: Question, newOption: string): Question {
-    return question;
+    const newQuestion = {
+        ...question,
+        options: [...question.options, newOption]
+    };
+    return newQuestion;
 }
 
 /**
