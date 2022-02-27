@@ -34,7 +34,7 @@ export function makeBlankQuestion(
 export function isCorrect(question: Question, answer: string): boolean {
     answer = answer.toLowerCase();
     answer = answer.trim();
-    return question.expected === answer;
+    return question.expected.toLowerCase() === answer;
 }
 
 /**
