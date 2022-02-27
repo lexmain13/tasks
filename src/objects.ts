@@ -1,5 +1,3 @@
-import { stringify } from "querystring";
-import { isQuestion } from "./functions";
 import { Question, QuestionType } from "./interfaces/question";
 
 /**
@@ -152,9 +150,10 @@ export function duplicateQuestion(id: number, oldQuestion: Question): Question {
  * Check out the subsection about "Nested Fields" for more information.
  */
 export function addOption(question: Question, newOption: string): Question {
+    const arrayCopy = JSON.parse(JSON.stringify(question.options));
     const newQuestion = {
         ...question,
-        options: [...question.options, newOption]
+        options: [...arrayCopy, newOption]
     };
     return newQuestion;
 }
