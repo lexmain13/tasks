@@ -1,3 +1,4 @@
+import { stringify } from "querystring";
 import { isQuestion } from "./functions";
 import { Question, QuestionType } from "./interfaces/question";
 
@@ -89,9 +90,34 @@ export function toShortForm(question: Question): string {
  */
 export function toMarkdown(question: Question): string {
     if (question.type === "multiple_choice_question") {
-        return "# " + question.name;
+        /**JSON.stringify(question.name);
+        JSON.stringify(question.body);
+        JSON.stringify(question.options);
+        return (
+            "#" + question.name,
+            question.body,
+            question.options[0],
+            question.options[1],
+            question.options[2],
+            question.options[3]
+            
+        );*/
+        JSON.stringify(question);
+        return (
+            "# " +
+            question.name +
+            "\n" +
+            question.body +
+            "\n- " +
+            question.options[0] +
+            "\n- " +
+            question.options[1] +
+            "\n- " +
+            question.options[2]
+        );
     } else {
-        return "# " + question.name;
+        JSON.stringify(question);
+        return "# " + question.name + "\n" + question.body;
     }
 }
 
