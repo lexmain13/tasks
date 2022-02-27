@@ -31,7 +31,9 @@ export function makeBlankQuestion(
  * HINT: Look up the `trim` and `toLowerCase` functions.
  */
 export function isCorrect(question: Question, answer: string): boolean {
-    return false;
+    const adjustedAnswer = answer.toLowerCase();
+    const finalAnswer = adjustedAnswer.trim();
+    return finalAnswer === question.expected;
 }
 
 /**
@@ -51,7 +53,7 @@ export function isValid(question: Question, answer: string): boolean {
  * name "My First Question" would become "9: My First Q".
  */
 export function toShortForm(question: Question): string {
-    return "";
+    return question.id + ": " + question.name.substring(0, 10);
 }
 
 /**
