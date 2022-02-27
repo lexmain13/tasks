@@ -1,3 +1,4 @@
+import { isQuestion } from "./functions";
 import { Question, QuestionType } from "./interfaces/question";
 
 /**
@@ -31,9 +32,9 @@ export function makeBlankQuestion(
  * HINT: Look up the `trim` and `toLowerCase` functions.
  */
 export function isCorrect(question: Question, answer: string): boolean {
-    const adjustedAnswer = answer.toLowerCase();
-    const finalAnswer = adjustedAnswer.trim();
-    return finalAnswer === question.expected;
+    answer = answer.toLowerCase();
+    answer = answer.trim();
+    return question.expected === answer;
 }
 
 /**
@@ -43,7 +44,20 @@ export function isCorrect(question: Question, answer: string): boolean {
  * be exactly one of the options.
  */
 export function isValid(question: Question, answer: string): boolean {
-    return false;
+    if (question.type === "short_answer_question") {
+        return true;
+    } else {
+        if (
+            answer === question.options[0] ||
+            answer === question.options[1] ||
+            answer === question.options[2] ||
+            answer === question.options[3]
+        ) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 /**
@@ -73,7 +87,7 @@ export function toShortForm(question: Question): string {
  * ------------------------------
  * Check the unit tests for more examples of what this looks like!
  */
-export function toMarkdown(question: Question): string { 
+export function toMarkdown(question: Question): string {
     if (question.type === "multiple_choice_question") {
         return "# " + question.name;
     } else {
@@ -96,6 +110,11 @@ export function renameQuestion(question: Question, newName: string): Question {
  * published; if it was published, now it should be not published.
  */
 export function publishQuestion(question: Question): Question {
+    if (question.published === false) {
+        question.published = true;
+    } else {
+        question.published = false;
+    }
     return question;
 }
 
@@ -106,7 +125,12 @@ export function publishQuestion(question: Question): Question {
  * The `published` field should be reset to false.
  */
 export function duplicateQuestion(id: number, oldQuestion: Question): Question {
-    return oldQuestion;
+    const copyQuestion = {
+        ...oldQuestion,
+        name: "Copy of " + oldQuestion.name,
+        published: false
+    };
+    return copyQuestion;
 }
 
 /**
