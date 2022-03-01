@@ -223,7 +223,35 @@ export function changeQuestionTypeById(
     targetId: number,
     newQuestionType: QuestionType
 ): Question[] {
-    return [];
+    const questionArray = questions.map(
+        (question: Question): Question => ({
+            ...question,
+            type: question.id === targetId ? newQuestionType : question.type
+        })
+    );
+    const updateQuestion = questionArray.map(
+        (questionArray: Question): Question => ({
+            ...questionArray,
+            options:
+                questionArray.id === targetId &&
+                questionArray.type !== "multiple_choice_question"
+                    ? []
+                    : questionArray.options
+        })
+    );
+    /**if (newQuestionType !== "multiple_choice_question") {
+        questionArray.map(
+            (questionArray: Question): Question => ({
+                ...questionArray,
+                options: []
+            })
+        );
+        return questionArray;
+    } else {
+        return questionArray;
+    }
+    */
+    return updateQuestion;
 }
 
 /**
