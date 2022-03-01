@@ -1,7 +1,7 @@
 import { idText } from "typescript";
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
-import { makeBlankQuestion, renameQuestion } from "./objects";
+import { duplicateQuestion, makeBlankQuestion, renameQuestion } from "./objects";
 
 /**
  * Consumes an array of questions and returns a new array with only the questions
@@ -239,18 +239,6 @@ export function changeQuestionTypeById(
                     : questionArray.options
         })
     );
-    /**if (newQuestionType !== "multiple_choice_question") {
-        questionArray.map(
-            (questionArray: Question): Question => ({
-                ...questionArray,
-                options: []
-            })
-        );
-        return questionArray;
-    } else {
-        return questionArray;
-    }
-    */
     return updateQuestion;
 }
 
@@ -284,5 +272,14 @@ export function duplicateQuestionInArray(
     targetId: number,
     newId: number
 ): Question[] {
-    return [];
+    const questionArray = [...questions];
+    const index: number = questionArray.findIndex(
+        (question: Question): boolean => question.id === targetId
+    );
+    questionArray.splice(
+        1 + index,
+        0,
+        duplicateQuestion(newId, questionArray[index])
+    );
+    return questionArray;
 }
