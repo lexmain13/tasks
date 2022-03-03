@@ -1,7 +1,7 @@
-import { idText } from "typescript";
+//import { urlToHttpOptions } from "url";
 import { Answer } from "./interfaces/answer";
 import { Question, QuestionType } from "./interfaces/question";
-import { duplicateQuestion, makeBlankQuestion, renameQuestion } from "./objects";
+import { duplicateQuestion, makeBlankQuestion } from "./objects";
 
 /**
  * Consumes an array of questions and returns a new array with only the questions
@@ -252,13 +252,50 @@ export function changeQuestionTypeById(
  * Remember, if a function starts getting too complicated, think about how a helper function
  * can make it simpler! Break down complicated tasks into little pieces.
  */
+export function helper(
+    targetIndex: number,
+    newOption: string,
+    optionsNew: string[]
+): string[] {
+    optionsNew.splice(targetIndex, 1, newOption);
+    const copyQuestion = optionsNew;
+    return copyQuestion;
+}
+
 export function editOption(
     questions: Question[],
     targetId: number,
     targetOptionIndex: number,
     newOption: string
-) {
-    return [];
+): Question[] {
+    const questionArray = questions.map(
+        (question: Question): Question => ({
+            ...question,
+            options: [...question.options]
+        })
+    );
+    const index = questionArray.findIndex(
+        (question: Question): boolean => question.id === targetId
+    );
+    if (targetOptionIndex === -1) {
+        questionArray[index].options.splice(
+            questionArray[index].options.length,
+            0,
+            newOption
+        );
+    } else {
+        questionArray.map(
+            (question: Question): Question => ({
+                ...question,
+                options: helper(
+                    targetOptionIndex,
+                    newOption,
+                    questionArray[index].options
+                )
+            })
+        );
+    }
+    return questionArray;
 }
 
 /***
