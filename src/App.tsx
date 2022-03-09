@@ -1,7 +1,11 @@
 import React from "react";
 import "./App.css";
-import { Col, Container, Row, Button } from "react-bootstrap";
-import Pup from "../src/Puppies.jpg";
+import { ChangeType } from "./components/ChangeType";
+import { RevealAnswer } from "./components/RevealAnswer";
+import { StartAttempt } from "./components/StartAttempt";
+import { TwoDice } from "./components/TwoDice";
+import { CycleHoliday } from "./components/CycleHoliday";
+import { Counter } from "./components/Counter";
 
 function App(): JSX.Element {
     return (
@@ -15,58 +19,18 @@ function App(): JSX.Element {
                 automatically reload.
             </p>
             <p>Hello World!</p>
-            <Container>
-                <Row>
-                    <Col>
-                        <div
-                            style={{
-                                border: "6px solid red",
-                                width: "200px",
-                                height: "150",
-                                backgroundColor: "red",
-                                alignContent: "center",
-                                padding: "2px"
-                            }}
-                        >
-                            My Top 3 Colors
-                            <ol>
-                                <li>Purple</li>
-                                <li>Pink</li>
-                                <li>Blue</li>
-                            </ol>
-                        </div>
-                        <br></br>
-                        <div>
-                            <p>
-                                <Button
-                                    onClick={() => console.log("Hello World!")}
-                                >
-                                    Log Hello World
-                                </Button>
-                            </p>
-                        </div>
-                    </Col>
-                    <Col>
-                        <div
-                            style={{
-                                border: "4px solid red",
-                                width: "300px",
-                                height: "550px",
-                                backgroundColor: "red",
-                                padding: "4px"
-                            }}
-                        >
-                            {" "}
-                            <img
-                                src={Pup}
-                                width="230"
-                                height="460"
-                                alt="My puppies, Tilly and Mojo."
-                            ></img>
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
+            <hr></hr>
+            <Counter></Counter>
+            <hr />
+            <RevealAnswer></RevealAnswer>
+            <hr />
+            <StartAttempt></StartAttempt>
+            <hr />
+            <TwoDice></TwoDice>
+            <hr />
+            <ChangeType></ChangeType>
+            <hr />
+            <CycleHoliday></CycleHoliday>
         </div>
     );
 }
