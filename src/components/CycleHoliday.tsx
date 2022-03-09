@@ -2,40 +2,41 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
 export function CycleHoliday(): JSX.Element {
-    //type Holiday = "💖" | "🐇" | "🎃" | "🎄" | "🥂";
-    const HolidayMovesYear: Record<string, string> = {
-        "💖": "🐇",
-        "🐇": "🎃",
-        "🎃": "🎄",
-        "🎄": "🥂",
-        "🥂": "💖"
+    type Holiday =
+        | "Holiday: 💖"
+        | "Holiday: 🐇"
+        | "Holiday: 🎃"
+        | "Holiday: 🎄"
+        | "Holiday: 🥂";
+    const HolidayMovesYear: Record<Holiday, Holiday> = {
+        "Holiday: 💖": "Holiday: 🐇",
+        "Holiday: 🐇": "Holiday: 🎃",
+        "Holiday: 🎃": "Holiday: 🎄",
+        "Holiday: 🎄": "Holiday: 🥂",
+        "Holiday: 🥂": "Holiday: 💖"
     };
-    const HolidayMovesAlphabet: Record<string, string> = {
-        "🎄": "🐇",
-        "🐇": "🎃",
-        "🎃": "🥂",
-        "🥂": "💖",
-        "💖": "🎄"
+    const HolidayMovesAlphabet: Record<Holiday, Holiday> = {
+        "Holiday: 🎄": "Holiday: 🐇",
+        "Holiday: 🐇": "Holiday: 🎃",
+        "Holiday: 🎃": "Holiday: 🥂",
+        "Holiday: 🥂": "Holiday: 💖",
+        "Holiday: 💖": "Holiday: 🎄"
     };
-    const [HolidayAl, setHolidayAl] = useState<string>("🎄");
-    const [HolidayYear, setHolidayYear] = useState<string>("💖");
+    const [holiday, setHoliday] = useState<Holiday>("Holiday: 🎄");
     function changeByAlphabet(): void {
-        const newHoliday = HolidayMovesAlphabet[HolidayAl];
-        setHolidayAl(newHoliday);
+        const newHoliday = HolidayMovesAlphabet[holiday];
+        setHoliday(newHoliday);
     }
     function changeByYear(): void {
-        const newHoliday = HolidayMovesYear[HolidayYear];
-        setHolidayYear(newHoliday);
+        const newHoliday = HolidayMovesYear[holiday];
+        setHoliday(newHoliday);
     }
     return (
         <div>
             <div>
                 <Button onClick={changeByAlphabet}>Advance by Alphabet</Button>
-                {HolidayAl}
-            </div>
-            <div>
                 <Button onClick={changeByYear}>Advance by Year</Button>
-                {HolidayYear}
+                {holiday}
             </div>
         </div>
     );

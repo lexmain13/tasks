@@ -23,8 +23,8 @@ export function TwoDice(): JSX.Element {
             {leftDie !== 1 && rightDie !== 1 && leftDie === rightDie && (
                 <div>You Win</div>
             )}
-            <span> Left Die: {leftDie} </span>
-            <span> Right Die: {rightDie} </span>
+            <span data-testid="left-die"> Left Die: {leftDie} </span>
+            <span data-testid="right-die"> Right Die: {rightDie} </span>
         </div>
     );
 }
