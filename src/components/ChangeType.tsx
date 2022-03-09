@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import { scryRenderedComponentsWithType } from "react-dom/test-utils";
+//import { scryRenderedComponentsWithType } from "react-dom/test-utils";
 import { QuestionType } from "../interfaces/question";
 
 export function ChangeType(): JSX.Element {
@@ -14,10 +14,17 @@ export function ChangeType(): JSX.Element {
             setQuestion("short_answer_question");
         }
     }
+    function nameQuestion(question: QuestionType): string {
+        if (question === "short_answer_question") {
+            return "Short Answer";
+        } else {
+            return "Multiple Choice";
+        }
+    }
     return (
         <div>
             <Button onClick={flipType}>Change Type</Button>
-            Question Type: <span>{question}</span>
+            <span>{nameQuestion(question)}</span>
         </div>
     );
 }

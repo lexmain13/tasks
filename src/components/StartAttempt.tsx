@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
-import { createSemanticDiagnosticsBuilderProgram } from "typescript";
+//import { createSemanticDiagnosticsBuilderProgram } from "typescript";
 
 export function StartAttempt(): JSX.Element {
     const [attempt, setAttempt] = useState<number>(4);
