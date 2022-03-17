@@ -20,7 +20,10 @@ export function ChangeColor(): JSX.Element {
             <div>
                 <p>
                     The current color is
-                    <span style={{ backgroundColor: chosen, color: "white" }}>
+                    <span
+                        data-testid="colored-box"
+                        style={{ backgroundColor: chosen, color: "white" }}
+                    >
                         {chosen}
                     </span>
                 </p>
