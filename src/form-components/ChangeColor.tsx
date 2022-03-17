@@ -3,13 +3,13 @@ import { Form } from "react-bootstrap";
 
 const COLORS = [
     "cyan",
-    "periwinkle",
+    "blue",
     "pink",
     "purple",
     "magenta",
-    "sage",
+    "black",
     "chartreuse",
-    "vermillion"
+    "orange"
 ];
 
 export function ChangeColor(): JSX.Element {
@@ -18,10 +18,12 @@ export function ChangeColor(): JSX.Element {
         <div>
             <h3>Change Color</h3>
             <div>
-                The current color is{" "}
-                <span style={{ backgroundColor: chosen, color: "white" }}>
-                    {chosen}
-                </span>
+                <p>
+                    The current color is
+                    <span style={{ backgroundColor: chosen, color: "white" }}>
+                        {chosen}
+                    </span>
+                </p>
                 {COLORS.map((color: string) => (
                     <Form.Check
                         key={color}
