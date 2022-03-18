@@ -21,13 +21,14 @@ PASS src/components/Counter.test.tsx
 PASS src/components/RevealAnswer.test.tsx
 PASS src/bad-components/ColoredBox.test.tsx
 PASS src/bad-components/ShoveBox.test.tsx
+PASS src/quizzer/Quizzer.test.tsx
 PASS src/App.test.tsx
 -----------------------------|---------|----------|---------|---------|-------------------
 File                         | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -----------------------------|---------|----------|---------|---------|-------------------
-All files                    |   98.87 |    93.33 |     100 |   98.84 |                   
- src                         |    98.3 |    92.47 |     100 |   98.26 |                   
-  App.tsx                    |     100 |      100 |     100 |     100 |                   
+All files                    |   98.51 |    92.62 |   99.23 |   98.47 |                   
+ src                         |   97.76 |    91.57 |   98.66 |   97.71 |                   
+  App.tsx                    |   66.66 |       50 |      50 |   66.66 | 24                
   arrays.ts                  |     100 |      100 |     100 |     100 |                   
   functions.ts               |   86.95 |    84.44 |     100 |   86.95 | 22,26,28          
   nested.ts                  |     100 |      100 |     100 |     100 |                   
@@ -53,10 +54,12 @@ All files                    |   98.87 |    93.33 |     100 |   98.84 |
  src/interfaces              |       0 |        0 |       0 |       0 |                   
   answer.ts                  |       0 |        0 |       0 |       0 |                   
   question.ts                |       0 |        0 |       0 |       0 |                   
+ src/quizzer                 |     100 |      100 |     100 |     100 |                   
+  Quizzer.tsx                |     100 |      100 |     100 |     100 |                   
 -----------------------------|---------|----------|---------|---------|-------------------
 
-Test Suites: 20 passed, 20 total
-Tests:       134 passed, 134 total
+Test Suites: 21 passed, 21 total
+Tests:       135 passed, 135 total
 Snapshots:   0 total
-Time:        12.084 s
+Time:        11.226 s
 Ran all test suites.
