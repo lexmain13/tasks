@@ -6,18 +6,6 @@ export function EditMode(): JSX.Element {
     const [isStudent, setisStudent] = useState<boolean>(true);
     const [isEditing, setisEditing] = useState<boolean>(false);
 
-    /**type ChangeEvent = React.ChangeEvent<
-        HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
-    >;
-    */
-
-    /**function updateName(event: ChangeEvent) {
-        console.log(name);
-        setName(event.target.value);
-        console.log(name);
-    }
-    */
-
     return (
         <div>
             <h3>Edit Mode</h3>
@@ -44,9 +32,8 @@ export function EditMode(): JSX.Element {
                             />
                         </Form.Group>
                         <Form.Check
-                            type="switch"
                             id="is-student"
-                            label="Not a student"
+                            label="Student Status"
                             checked={isStudent}
                             onChange={() => setisStudent(!isStudent)}
                         />
