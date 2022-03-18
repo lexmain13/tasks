@@ -3,55 +3,63 @@ import { Form } from "react-bootstrap";
 
 export function EditMode(): JSX.Element {
     const [name, setName] = useState<string>("Your Name");
-    const [isStudent, setIsStudent] = useState<boolean>(true);
-    const [isEditing, setIsEditing] = useState<boolean>(true);
+    const [isStudent, setisStudent] = useState<boolean>(true);
+    const [isEditing, setisEditing] = useState<boolean>(false);
+
+    /**type ChangeEvent = React.ChangeEvent<
+        HTMLTextAreaElement | HTMLInputElement | HTMLSelectElement
+    >;
+    */
+
+    /**function updateName(event: ChangeEvent) {
+        console.log(name);
+        setName(event.target.value);
+        console.log(name);
+    }
+    */
 
     return (
         <div>
             <h3>Edit Mode</h3>
             <div>
-                <Form.Switch
+                <Form.Check
                     type="switch"
                     id="is-edit-mode"
                     label="Editing"
                     checked={isEditing}
-                    onChange={() => setIsEditing(!isEditing)}
-                    disabled={isStudent === false}
+                    onChange={() => setisEditing(!isEditing)}
                 />
             </div>
             <div>
                 {isEditing ? (
-                    "In Edit Mode"
-                ) : isStudent ? (
                     <div>
-                        <span>{name}</span> is a student
+                        <Form.Group controlId="personName">
+                            <Form.Label>Name:</Form.Label>
+                            <Form.Control
+                                placeholder="Your Name"
+                                value={name}
+                                onChange={(
+                                    event: React.ChangeEvent<HTMLInputElement>
+                                ) => setName(event.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Check
+                            type="switch"
+                            id="is-student"
+                            label="Not a student"
+                            checked={isStudent}
+                            onChange={() => setisStudent(!isStudent)}
+                        />
                     </div>
                 ) : (
                     <div>
-                        <span>{name}</span> is a not student
+                        {isStudent ? (
+                            <div>{name} is a student</div>
+                        ) : (
+                            <div>{name} is not a student</div>
+                        )}
                     </div>
                 )}
-            </div>
-            <div>
-                <Form.Check
-                    type="checkbox"
-                    id="is-student"
-                    label="Student"
-                    checked={isStudent}
-                    onChange={() => setIsStudent(!isStudent)}
-                />
-            </div>
-            <div>
-                <Form.Group>
-                    <Form.Label>Name:</Form.Label>
-                    <Form.Control
-                        type="textbox"
-                        value={name}
-                        onChange={(
-                            event: React.ChangeEvent<HTMLInputElement>
-                        ) => setName(event.target.value)}
-                    />
-                </Form.Group>
             </div>
         </div>
     );
