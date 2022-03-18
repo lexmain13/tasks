@@ -16,6 +16,7 @@ export function EditMode(): JSX.Element {
                     label="Editing"
                     checked={isEditing}
                     onChange={() => setIsEditing(!isEditing)}
+                    disabled={isStudent === false}
                 />
             </div>
             <div>
