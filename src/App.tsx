@@ -69,6 +69,15 @@ function App(): JSX.Element {
                     </>
                 )}
             </div>
+            <hr />
+            <img src="../src/Task_11_Sketch.jpg" alt="Sketch for Quizzer" />
+            <hr />
+            <div>
+                Completed Features:
+                <ul>
+                    <li>Sketch</li>
+                </ul>
+            </div>
         </div>
     );
 }
