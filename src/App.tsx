@@ -72,10 +72,14 @@ function App(): JSX.Element {
             <hr />
             <img src="../src/Task_11_Sketch.jpg" alt="Sketch for Quizzer" />
             <hr />
-            <h1>Completed Features</h1>
-            <ul>
-                <li>Sketch</li>
-            </ul>
+            <col>
+                <div>
+                    Completed Features:
+                    <ul>
+                        <li>Sketch</li>
+                    </ul>
+                </div>
+            </col>
         </div>
     );
 }
