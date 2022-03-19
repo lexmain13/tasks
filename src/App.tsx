@@ -31,7 +31,6 @@ function App(): JSX.Element {
                 UD CISC275 with React Hooks and TypeScript
                 <h1>Alexis Mainiero</h1>
             </header>
-            <Quizzer></Quizzer>
             <div>
                 <Button onClick={flipVisibility}>Show Components</Button>
                 {visible && (
@@ -70,6 +69,7 @@ function App(): JSX.Element {
                     </>
                 )}
             </div>
+            <Quizzer></Quizzer>
             <hr />
             <img
                 src={Sketch}
